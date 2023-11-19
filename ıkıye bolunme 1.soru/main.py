@@ -3,33 +3,22 @@
 
 
 def f(x):
-    return x ** 3 - 2 * x ** 2 - 5 # fonksiyonu tanımladım
+    return  x ** 3 - 2 * x ** 2 - 5
 
-# hangi iki deger arasında olacagini yazdım
-a = 2
-b = 4
+a, b = 2, 4
+max_iter = 4
 
-def ikiye_bolme_metodu(a, b, max_iterasyon):
-    iterasyon = 0
-    while iterasyon < max_iterasyon:   #4 isterasyon olana kadar dongu devam edecek
-        c = (a + b) / 2# ikiye bolme metodu formulu
+for iterasyon in range(1, max_iter + 1):
+    c = (a + b) / 2
+    if f(c) == 0:
+        print("bu iki nokta arasında kök bulunmuyo!")
+        break
+    elif f(c) * f(a) < 0:
+        b = c
+    else:
+        a = c
 
+    print(f"{iterasyon}. iterasyondaki kök: {c}")
 
-        if f(c)== 0:
-            return c
-        elif f(a) * f(c) < 0:
-            b = c # f(c) negatifse kokler a ve c arssında olur
-        else:
-            a = c ## f(c) pozitifse  kokler b ve c arssında olur
-
-        iterasyon += 1
-
-    return (a + b) / 2
-
-
-# Maks iterasyon sayısı
-max_iterasyon = 4
-
-kok = ikiye_bolme_metodu(a, b, max_iterasyon)
-
-print("Bulunan kök:", kok)
+kok = (a + b) / 2
+print(f"kök: {kok}")
