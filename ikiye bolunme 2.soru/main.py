@@ -2,34 +2,22 @@
 #ikiye bolunme 2. soru
 
 def f(x):
-    return  x**3 + 4*x**2 - 10 #fonksiyonu tanımladık
+    return x**3 + 4*x**2 - 10
 
-a = 1  #hangi iki değer arasıdan olacağini belirtim
-b = 2
+a, b = 1, 2
+max_iter = 4
 
+for iterasyon in range(1, max_iter + 1):
+    c = (a + b) / 2
+    if f(c) == 0:
+        print("bu iki nokta arasında kök bulunmuyo!")
+        break
+    elif f(c) * f(a) < 0:
+        b = c
+    else:
+        a = c
 
-def ikiye_bolme(a, b,max_iter): #değişkenleri tanımladım
+    print(f"{iterasyon}. iterasyondaki kök: {c}")
 
-    iterasyon = 0  #0 incı iterosayndan başlayıp 4 e kadar devam edecek
-
-    while  iterasyon < max_iter: #kok hata payından kucuk oluncaya kadar devam edecek
-        c = (a + b) / 2
-
-        if f(c) == 0:
-
-            print("bu iki kok arasında kök bulunmuyor")
-            break
-        elif f(c) * f(a) < 0:# c negatif değer alırsa yeni aralik c ile a arasında olur
-            b = c
-        else:
-            a = c  #değilse b ile c arasında olur
-
-        iterasyon += 1
-
-    return (a + b) / 2
-
-max_iterasyon = 4
-
-kok = ikiye_bolme(a, b,max_iterasyon)
-
-print(f"Denklemin kökü: {kok}")
+kok = (a + b) / 2
+print(f"kök: {kok}")
